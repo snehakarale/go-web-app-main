@@ -24,4 +24,4 @@ spec:
 
   type: ClusterIP                   # The type of the Service. "ClusterIP" is the default service type, meaning this Service will only be accessible within the Kubernetes cluster (internal access only).
                                     # Other types could include NodePort (exposes the service outside the cluster on a specific port) or LoadBalancer (provisions an external load balancer for the service).
->>>>>>> 1312a69e9cd48b7c26b5246e6ae9572bd6071b14
+
