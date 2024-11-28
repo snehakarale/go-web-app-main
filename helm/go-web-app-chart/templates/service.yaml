@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 # This is a Kubernetes Service definition to expose the 'go-web-app' application
 
 apiVersion: v1                      # The version of the Kubernetes API to use for this resource. For services, it's "v1".
@@ -20,25 +20,7 @@ spec:
 
   type: ClusterIP                   # The type of the Service. "ClusterIP" is the default service type, meaning this Service will only be accessible within the Kubernetes cluster (internal access only).
                                     # Other types could include NodePort (exposes the service outside the cluster on a specific port) or LoadBalancer (provisions an external load balancer for the service).
-=======
-# This is a Kubernetes Service definition to expose the 'go-web-app' application
 
-apiVersion: v1                      # The version of the Kubernetes API to use for this resource. For services, it's "v1".
-kind: Service                       # The kind of Kubernetes resource we're defining. In this case, it's a Service.
-metadata:
-  name: go-web-app                 # The name of the Service. This name will be used to reference the service in the Kubernetes cluster.
-  labels:
-    app: go-web-app                # Labels are key-value pairs used for identifying and grouping resources. This label associates the Service with the 'go-web-app' application.
-
-spec:
-  ports:                            # Specifies the ports on which the Service will expose the application.
-  - port: 80                        # The port on which the Service will be exposed to the outside world (within the Kubernetes cluster). This is the port clients will connect to.
-    targetPort: 8080                # The port on the container inside the Pod that the Service should forward traffic to. In this case, the container in the Pod is listening on port 8080.
-    protocol: TCP                   # The protocol used for communication (TCP in this case). It could also be UDP if needed, but TCP is most common for web services.
-  
-  selector:
-    app: go-web-app                 # The selector specifies which Pods the Service should route traffic to. In this case, it matches Pods that have the label 'app: go-web-app'. 
-                                    # The Service will route traffic to Pods running the `go-web-app` application.
 
   type: ClusterIP                   # The type of the Service. "ClusterIP" is the default service type, meaning this Service will only be accessible within the Kubernetes cluster (internal access only).
                                     # Other types could include NodePort (exposes the service outside the cluster on a specific port) or LoadBalancer (provisions an external load balancer for the service).
