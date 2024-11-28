@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 apiVersion: networking.k8s.io/v1           # The API version used for networking resources (Ingress).
 kind: Ingress                              # This specifies that we are creating an Ingress resource.
 metadata:
@@ -17,3 +18,24 @@ spec:
             name: go-web-app              # The name of the service to route the traffic to. In this case, it is a service named "go-web-app".
             port: 
               number: 80                  # The port of the service where traffic should be directed. Here, it is port 80 (standard HTTP port).
+=======
+apiVersion: networking.k8s.io/v1           # The API version used for networking resources (Ingress).
+kind: Ingress                              # This specifies that we are creating an Ingress resource.
+metadata:
+  name: go-web-app                        # The name of the Ingress resource (for reference).
+  annotations:                            # Annotations are key-value pairs used for additional configuration.
+    nginx.ingress.kubernetes.io/rewrite-target: /  # This is an NGINX-specific annotation. It tells the NGINX Ingress controller to rewrite the URL path. All incoming traffic to the root ("/") will be rewritten to "/" before being passed to the backend service.
+spec:
+  ingressClassName: nginx                  # Specifies the Ingress controller to be used. Here, we use "nginx" as the controller.
+  rules:                                   # Defines the rules for routing HTTP traffic.
+  - host: go-web-app.local               # The domain name (or host) where the traffic will be routed. In this case, traffic for "go-web-app.local" will be directed to the service.
+    http:                                  # This defines the HTTP paths and the backend services to route to.
+      paths: 
+      - path: /                             # Defines the URL path for routing. Here, the path is "/". Any request to "go-web-app.local/" will match this path.
+        pathType: Prefix                    # This means that any path starting with "/" will match this rule (e.g., "/about", "/home" will also match).
+        backend:                           # The backend is the Kubernetes service that will handle the request.
+          service: 
+            name: go-web-app              # The name of the service to route the traffic to. In this case, it is a service named "go-web-app".
+            port: 
+              number: 80                  # The port of the service where traffic should be directed. Here, it is port 80 (standard HTTP port).
+>>>>>>> 1312a69e9cd48b7c26b5246e6ae9572bd6071b14
