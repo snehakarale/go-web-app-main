@@ -1,0 +1,21 @@
+apiVersion: apps/v1  # The version of the Kubernetes API to use for this resource
+kind: Deployment     # The type of Kubernetes resource being defined
+metadata:
+  name: go-web-app   # Name of the Deployment
+  labels:
+    app: go-web-app  # Label to categorize and organize the resource
+spec:
+  replicas: 1        # Number of pod replicas to run
+  selector:
+    matchLabels:
+      app: go-web-app  # Match labels to associate Pods with the Deployment
+  template:
+    metadata:
+      labels:
+        app: go-web-app  # Labels to be applied to the Pods
+    spec:
+      containers:
+        - name: go-web-app       # Container name
+          image: snehakarale/go-web-app:{{ .Values.image.tag }}  # Docker image to use for the container
+          ports:
+            - containerPort: 8080   # Container port to expose (application listens on port 8080)
